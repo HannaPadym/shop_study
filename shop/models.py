@@ -1,5 +1,5 @@
-
 from django.db import models
+from django.urls import reverse
 from django.utils.text import slugify
 
 
@@ -29,6 +29,8 @@ class Category(models.Model):
             self.slug = slugify(self.name)
         super(Category, self).save(*args, **kwargs)
 
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug})
 
 
 class Product(models.Model):
@@ -54,14 +56,16 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('post', kwargs={'post_slug': self.slug})
 
 
-class ProductManager:
+class ProductManager(models.Manager):
     def get_queryset(self):
         return super(ProductManager, self).get_queryset().filter(avaible=True)
 
 
-class ProxyProduct:
+class ProxyProduct(Product):
     objects = ProductManager()
 
     class Meta:
