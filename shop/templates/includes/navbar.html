@@ -1,66 +1,76 @@
-{% load static %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, #ffa100, #e60042);">
-    <div class="container-fluid">
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
-                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="d-flex flex-row" id="navbarTogglerDemo02" style="margin-left: 150px">
-            <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
-                <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Location</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Продавайте на Shop_App</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Работа в Shop_App</a>
-                </li>
+<nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, #ffa100, #e60042);>
+  <div class=" container-fluid">
+<a class="navbar-brand" href="#">SHOP_APP</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+                Выбрать
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Категории (здесь будут)</a></li>
             </ul>
-        </div>
-        <li class="d-flex flex-row-reverse" style="margin-right: 150px">
-            <a class="nav-link" href="#">Валюта</a>
         </li>
-    </div>
-</nav>
-
-<div class="collapse" id="navbarToggleExternalContent">
-    <div class="bg-dark p-4">
-        <h5 class="text-white h4">Collapsed content</h5>
-        <span class="text-muted">Toggleable via the navbar brand.</span>
-    </div>
-</div>
-<nav class="navbar navbar-dark bg-dark" style="background: linear-gradient(to right, #ffa100, #e60042);">
-    <div class="container-fluid" style="margin-left: 150px; margin-right: 150px;  float: right;">
-        <a class="navbar-brand" href="#" style="font-weight: bold;">SHOP_APP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse"
-                data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent"
-                aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <form class="d-flex" style="width: 1000px">
-            <input class="form-control mr-2" type="search" placeholder="Найти на Shop_App" aria-label="Search">
-            <button class="btn btn-outline-success" type="submit">Search</button>
-        </form>
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">
-                <img src="location.svg" width="20" height="20">
-                <figcaption class="figure-caption"> Адреса</figcaption>
-            </a>
+            <a class="nav-link active" aria-current="page" href="#">Работа в SHOP_APP</a>
         </li>
-        <li class="nav-item" class="position-absolute bottom-0 end-0">
-            <a class="nav-link" href="#"><img src="my_shop/shop/static/shop/img/location.png"
-                                              alt="" width="30" height="24">
-                <figcaption class="figure-caption"> Войти</figcaption>
-            </a>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Продавайте в SHOP_APP</a>
         </li>
-        <li class="nav-item" class="p-2 bd-highlight">
-            <a class="nav-link" href="#"><img src="/docs/5.0/assets/brand/bootstrap-logo.svg"
-                                              alt="" width="30" height="24">
-                <figcaption class="figure-caption"> Корзина</figcaption>
-            </a>
+        <li class="nav-item">
+            <a class="nav-link" href="#"><i class="bi bi-currency-exchange"></i></a>
         </li>
 
+
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" placeholder="Найти на SHOP_APP"
+                   aria-label="Search">
+
+            <button class="btn btn-outline-dark" type="submit">Поиск</button>
+        </form>
+    </ul>
+
+    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-geo-alt-fill"></i></a>
+        </li>
+
+        <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+               aria-expanded="false">
+                <i class="bi bi-person-fill"></i>
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Войти</a></li>
+                <li><a class="dropdown-item" href="#">Регистрация</a></li>
+            </ul>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i class="bi bi-cart4"></i></a>
+            <div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Корзина</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Вернуться в каталог</button>
+        <button type="button" class="btn btn-primary">Оформить заказ</button>
+      </div>
     </div>
-
+  </div>
+</div>
+        </li>
+    </ul>
+</div>
+</div>
 </nav>
