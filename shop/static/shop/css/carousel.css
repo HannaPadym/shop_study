@@ -1,0 +1,31 @@
+.my-carousel {
+    padding: 5px;
+    border-radius: 20px 20px 150px 150px;
+}
+
+.my-carousel h5{
+    font-size: 60px;
+    border-radius: 20px 20px 150px 150px;
+}
+
+.my-carousel p{
+    font-size: 30px;
+    border-radius: 20px 20px 150px 150px;
+}
+.carousel-caption {
+    bottom: 100px;
+    border-radius: 20px 20px 150px 150px;
+}
+
+.carousel-inner{
+justify-content: center;
+ border-radius: 1rem;
+}
+
+.carousel-item {
+    height: 10rem;
+    width: 140rem;
+
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
