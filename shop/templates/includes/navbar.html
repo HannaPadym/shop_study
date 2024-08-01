@@ -1,76 +1,114 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background: linear-gradient(to right, #ffa100, #e60042);">
-  <div class=" container-fluid">
-<a class="navbar-brand" href="#">SHOP_APP</a>
-<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-</button>
-<div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">
-                Выбрать
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Категории (здесь будут)</a></li>
+    <div class=" container-fluid">
+        <a class="navbar-brand" href="#">SHOP_APP</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Выбрать
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        {% for i in categories %}
+                        {% if not i.children.all %}
+                        <li><a class="nav-item" href="{{i.get_absolute_url}}">{{i|upper}}</a></li>
+                        {%else%}
+                        <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#"
+                                                         role="button"
+                                                         data-bs-toggle="dropdown"
+                                                         aria-expanded="false">{{i|upper}}</a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                {% for obj in i.children.all %}
+                                {% if not obj.children.all %}
+                                <li><a class="nav-item" href="{{obj.get_absolute_url}}">{{obj|upper}}</a></li>
+                                {%else%}
+                                <li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle" href="#">{{obj|upper}}</a>
+                                    <ul class="dropdown-menu">
+                                        {% for sub_obj in obj.children.all %}
+                                        <li><a class="nav-item" href="{{sub_obj.get_absolute_url}}">{{sub_obj|upper}}</a></li>
+                                        {% endfor %}
+                                    </ul>
+                                </li>
+                                {%endif%}
+
+                                {%endfor%}
+                            </ul>
+                        </li>
+                        {% endif %}
+                        {% endfor %}
+
+
+                    </ul>
+                </li>
+
+
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#">Работа в SHOP_APP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Продавайте в SHOP_APP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#"><i class="bi bi-currency-exchange"></i></a>
+                </li>
+
+
+                <form class="d-flex">
+                    <input class="form-control me-2" type="search" placeholder="Найти на SHOP_APP"
+                           aria-label="Search">
+
+                    <button class="btn btn-outline-dark" type="submit">Поиск</button>
+                </form>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#">Работа в SHOP_APP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Продавайте в SHOP_APP</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#"><i class="bi bi-currency-exchange"></i></a>
-        </li>
 
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-geo-alt-fill"></i></a>
+                </li>
 
-        <form class="d-flex">
-            <input class="form-control me-2" type="search" placeholder="Найти на SHOP_APP"
-                   aria-label="Search">
-
-            <button class="btn btn-outline-dark" type="submit">Поиск</button>
-        </form>
-    </ul>
-
-    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-geo-alt-fill"></i></a>
-        </li>
-
-        <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-               aria-expanded="false">
-                <i class="bi bi-person-fill"></i>
-            </a>
-            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <li><a class="dropdown-item" href="#">Войти</a></li>
-                <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        <i class="bi bi-person-fill"></i>
+                    </a>
+                    <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <li><a class="dropdown-item" href="#">Войти</a></li>
+                        <li><a class="dropdown-item" href="#">Регистрация</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i
+                            class="bi bi-cart4"></i></a>
+                    <div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false"
+                         tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-xl">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="staticBackdropLabel">Корзина</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Вернуться в
+                                        каталог
+                                    </button>
+                                    <button type="button" class="btn btn-primary">Оформить заказ</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#" data-bs-toggle="modal" data-bs-target="#modal-cart"><i class="bi bi-cart4"></i></a>
-            <div class="modal fade" id="modal-cart" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog modal-xl">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="staticBackdropLabel">Корзина</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Вернуться в каталог</button>
-        <button type="button" class="btn btn-primary">Оформить заказ</button>
-      </div>
+        </div>
     </div>
-  </div>
-</div>
-        </li>
-    </ul>
-</div>
-</div>
 </nav>

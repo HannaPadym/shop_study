@@ -24,3 +24,5 @@ def category_list(request, slug):
     products = ProxyProduct.objects.select_related('category').filter(category=category)
     context = {'products': products, 'category': category}
     return render(request, 'shop/category_list.html', context)
+
+

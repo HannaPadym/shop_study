@@ -2,5 +2,16 @@
 
 {% block title %} Каталог {% endblock %}
 {% block content %}
-{% products %}
+{% for i in products %}
+<div class="card" style="width: 18rem;">
+  <img src=" {{ i.image.url }}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <p class="card-text">{{i.title}}</p>
+    <p class="card-text">{{i.brand}}</p>
+    <p class="card-text">{{i.price}}</p>
+    <p class="card-text">{{i.description}}</p>
+    <p class="card-text">{{i.available}}</p>
+  </div>
+</div>
+{% endfor %}
 {%endblock %}

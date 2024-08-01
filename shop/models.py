@@ -30,7 +30,7 @@ class Category(models.Model):
         super(Category, self).save(*args, **kwargs)
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        return reverse('shop:one_category', kwargs={'slug': self.slug})
 
 
 class Product(models.Model):
@@ -57,12 +57,12 @@ class Product(models.Model):
         return self.title
 
     def get_absolute_url(self):
-        return reverse('post', kwargs={'post_slug': self.slug})
+        return reverse('shop:product', kwargs={'slug': self.slug})
 
 
 class ProductManager(models.Manager):
     def get_queryset(self):
-        return super(ProductManager, self).get_queryset().filter(avaible=True)
+        return super(ProductManager, self).get_queryset().filter(available=True)
 
 
 class ProxyProduct(Product):
